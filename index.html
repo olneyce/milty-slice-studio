@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Milty Slice Studio</title>
+    <link rel="stylesheet" href="styles.css?v=20260625-no-tile-borders" />
+  </head>
+  <body>
+    <main class="app">
+      <aside class="library" aria-label="System tile library">
+        <div class="brand">
+          <div>
+            <p class="eyebrow">Twilight Imperium</p>
+            <h1>Milty Slice Studio</h1>
+          </div>
+          <button id="resetSlices" class="icon-button" title="Clear all slices" aria-label="Clear all slices">↺</button>
+        </div>
+
+        <div class="controls">
+          <label class="search">
+            <span>Search</span>
+            <input id="searchInput" type="search" placeholder="Planet, skip, wormhole..." />
+          </label>
+
+          <div class="set-tabs" role="tablist" aria-label="Tile set">
+            <button class="active" data-set="all">All</button>
+            <button data-set="base">Base</button>
+            <button data-set="pok">PoK</button>
+            <button data-set="te">TE</button>
+          </div>
+
+          <div class="filter-row" aria-label="Tile tags">
+            <button data-filter="blue-tile">Blue tiles</button>
+            <button data-filter="red-tile">Red tiles</button>
+            <button data-filter="planet">Planets</button>
+            <button data-filter="empty">Empty</button>
+            <button data-filter="anomaly">Anomaly</button>
+            <button data-filter="wormhole">Wormhole</button>
+            <button data-filter="skip">Skip</button>
+          </div>
+        </div>
+
+        <div class="library-meta">
+          <span id="tileCount"></span>
+          <button id="importTiles">Import tiles</button>
+          <input id="tileImportInput" type="file" accept="application/json" hidden />
+        </div>
+
+        <div id="tileList" class="tile-list"></div>
+      </aside>
+
+      <section class="workspace" aria-label="Slice workspace">
+        <header class="workspace-header">
+          <div>
+            <p class="eyebrow">Standard Milty Shape</p>
+            <h2>Build and compare slices</h2>
+          </div>
+          <div class="actions">
+            <label class="slice-count">
+              <span>Slices</span>
+              <input id="sliceCount" type="number" min="1" max="12" value="6" />
+            </label>
+            <button id="randomSlices">Random slices</button>
+            <button id="addSlice">+ Slice</button>
+            <button id="exportSlices">Export</button>
+            <button id="importSlices">Import</button>
+            <input id="sliceImportInput" type="file" accept="application/json" hidden />
+          </div>
+          <div id="generatorStatus" class="generator-status" role="status" aria-live="polite"></div>
+        </header>
+
+        <div id="sliceGrid" class="slice-grid"></div>
+      </section>
+    </main>
+
+    <dialog id="exportDialog">
+      <form method="dialog">
+        <div class="dialog-header">
+          <h3>Export slices</h3>
+          <button aria-label="Close">×</button>
+        </div>
+        <textarea id="exportText" readonly></textarea>
+        <div class="dialog-actions">
+          <button id="copyExport" type="button">Copy JSON</button>
+          <button>Done</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="app.js?v=20260625-no-tile-borders"></script>
+  </body>
+</html>
